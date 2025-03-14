@@ -2868,6 +2868,8 @@ int get_and_out( struct contact *cont_ptr )   /* get AND or OUT machine code */
 /*********************************************************************/
 int get_pld( struct contact *cont_ptr )   /* get  PLD machine code */
 {
+
+    // 2025 
     char buffer[256]; // 分配足夠的debug緩存
 
    char a,b,c,*code_ptr;
@@ -4946,6 +4948,7 @@ static void get_arith_r( char *code_ptr, struct funct *funct_ptr )   /* get mach
     a3=*code_ptr++;  /* macine word number */
     a4=*code_ptr++;  /* macine word number */
 
+    // 2025 armv7
 
     uint32_t machine_cmp = generate_cmp(5, 0);
     //存 code
@@ -9295,6 +9298,7 @@ static void get_cmp_i_x86( char *code_ptr, struct funct   *funct_ptr )   /* get 
 /*******************************************************************/
 static void get_mov_r( char *code_ptr, struct funct *funct_ptr )   /* get machine - two argument */
 {
+    // 2025 armv7
     NUM_TYPE *temp_ptr;
     int a1,a2;
     long int j,k;
@@ -9421,7 +9425,7 @@ static void get_mov_r_x86( char *code_ptr, struct funct *funct_ptr )   /* get ma
 static void get_mov_i( char *code_ptr, struct funct *funct_ptr )   /* get machine - two argument */
 {
     char buffer[256]; // 分配足夠的debug緩存
-    
+    // 2025 armv7
     long *Reg;
     NUM_TYPE *temp_ptr;
     int a1,a2;
@@ -10072,6 +10076,7 @@ static void get_rot( char *code_ptr, struct funct *funct_ptr )      /* get machi
 /*********************************************************************/
 static void get_ucnt( char *code_ptr, struct funct *funct_ptr )   /* get UCNT machine code */
 {
+    // 2025 armv7
     char buffer[256]; // 分配足夠的debug緩存
 
     NUM_TYPE *temp_ptr;
@@ -10539,6 +10544,7 @@ static void get_ucnt( char *code_ptr, struct funct *funct_ptr )   /* get UCNT ma
 /*********************************************************************/
 static void get_dcnt( char *code_ptr, struct funct *funct_ptr )   /* get DCNT machine code */
 {
+    // 2025 armv7
     NUM_TYPE *temp_ptr;
     char index,a[10];
     long int j,k;
@@ -10872,6 +10878,7 @@ write_to_array(strb_r5_dd_n1_again);
 /*********************************************************************/
 static void get_r_ucnt( char *code_ptr, struct funct *funct_ptr )   /* get R_UCNT machine code */
 {
+    // 2025 armv7
     NUM_TYPE *temp_ptr;
     char index,a[9];
     long int j,k;
@@ -11146,6 +11153,7 @@ static void get_r_ucnt( char *code_ptr, struct funct *funct_ptr )   /* get R_UCN
 /*********************************************************************/
 static void get_r_dcnt( char *code_ptr, struct funct *funct_ptr )   /* get R_DCNT machine code */
 {
+    // 2025 armv7
     NUM_TYPE *temp_ptr;
     char index,a[9];
     long int j,k;
@@ -11537,6 +11545,7 @@ else
 /*******************************************************************/
 static void get_reset( char *code_ptr, struct funct *funct_ptr )   /* get RESET machine code */
 {
+    // 2025 armv7
     NUM_TYPE *temp_ptr;
     char a1,a2,a3,a4;    //a5,a6;
     long int d,c;
@@ -11748,6 +11757,8 @@ void get_timer0( char *code_ptr, struct funct *funct_ptr )     /* get machine - 
     Reg = (long*)(funct_ptr->arg+6);
     Timer = (long*)(funct_ptr->arg);
     char buffer[256]; // 分配足夠的debug緩存
+    // 2025 armv7
+
     // fprintf(plc_run_cpp,"    TIMER0(%d,%d,*(long*)(Data+%d),*(long*)(Data+%d),Data+%d,*(long*)(Data+%d),*(long*)(Data+%d),*(long*)(Data+%d),Data+%d);\n",
     //                             bValue,Value,(*Reg*4) + s_a0_reg_ofs,(*Timer*16) + s_a0_tmr_ofs,(*Timer*2) + s_a0_tmr_s_ofs,
     //                             (*Timer*16)+s_a0_tmr_ofs+4,tmrbuf,(*Timer*16)+s_a0_tmr_ofs+8,(*Timer*2)+s_a0_tmr_s_ofs+1);
@@ -12437,6 +12448,7 @@ void get_timer1( char *code_ptr, struct funct *funct_ptr )     /* get machine - 
       bValue = true;
       Value = *(long*)(funct_ptr->arg+6);
     }
+    // 2025 armv7
     Reg = (long*)(funct_ptr->arg+6);
     Timer = (long*)(funct_ptr->arg);
     char buffer[256]; // 分配足夠的debug緩存
@@ -13156,7 +13168,7 @@ void get_timer2( char *code_ptr, struct funct *funct_ptr )   /* get machine - tw
     Reg = (long*)(funct_ptr->arg+6);
     Timer = (long*)(funct_ptr->arg);
 
-
+    // 2025 armv7
     char buffer[256]; // 分配足夠的debug緩存
     sprintf(buffer,"   TIMER2(%d,%d,*(long*)(Data+%lx),*(long*)(Data+%lx),Data+%lx,*(long*)(Data+%lx),*(long*)(Data+%lx),*(long*)(Data+%lx),Data+%lx,Data+%lx,Data+%lx,Data+%lx,Data+%lx);\n",
     bValue,Value,(*Reg*4) + s_a0_reg_ofs,(*Timer*16) + s_a0_tmr_ofs,(*Timer*2) + s_a0_tmr_s_ofs,
@@ -13727,6 +13739,7 @@ void get_timer3( char *code_ptr, struct funct *funct_ptr )   /* get machine - tw
     Reg = (long*)(funct_ptr->arg+6);
     Timer = (long*)(funct_ptr->arg);
 
+    // 2025 armv7
 
     // char buffer[256]; // 分配足夠的debug緩存
     // sprintf(buffer,
@@ -14397,7 +14410,7 @@ void Get_RTimer1MS_Reg( char *code_ptr, struct funct *funct_ptr )     /* get mac
     Reg = (long*)(funct_ptr->arg+6);
     TimerReg = (long*)(funct_ptr->arg);
 
-
+    // 2025 armv7
     sprintf(buffer, "%s 0x%lx ", "20250119 func=RTimer1MS_Reg*tmrbuf", tmrbuf); // 格式化字符串
     OutputDebugStringA(buffer); // 輸出到 DebugView
 
@@ -14967,7 +14980,7 @@ void Get_RTimer1MS_Imm( char *code_ptr, struct funct *funct_ptr )     /* get mac
     j=(long)s_mlc_reg;          /* MLC_Data + 0x2400 */
     k=(long)MLC_Data;
     s_a0_reg_ofs=j-k;
-
+    // 2025 armv7
 
     j=(long)TIMBUF0;            /* s_a1_ref + 0x2800 */
     tmrbuf=j-k;
@@ -15523,6 +15536,7 @@ void Get_RTimer1MS_Imm( char *code_ptr, struct funct *funct_ptr )     /* get mac
 /*********************************************************************/
 void Get_RTimer1MS_Reg_x86( char *code_ptr, struct funct *funct_ptr )     /* get machine - two argument */
 {
+    
     NUM_TYPE *temp_ptr;
     char index,a[15];
     long int j,k;
@@ -15727,6 +15741,7 @@ void Get_RTimer1MS_Imm_x86( char *code_ptr, struct funct *funct_ptr )     /* get
 /*********************************************************************/
 void Get_RTimer10MS_Reg( char *code_ptr, struct funct *funct_ptr )     /* get machine - two argument */
 {
+    // 2025 armv7
     NUM_TYPE *temp_ptr;
     char index,a[19];
     long int j,k;
@@ -16441,6 +16456,7 @@ void Get_RTimer10MS_Reg_x86( char *code_ptr, struct funct *funct_ptr )     /* ge
 /*********************************************************************/
 void Get_RTimer10MS_Imm( char *code_ptr, struct funct *funct_ptr )     /* get machine - two argument */
 {
+    // 2025 armv7
     NUM_TYPE *temp_ptr;
     char index,a[19];
     long int j,k;
@@ -17144,6 +17160,7 @@ void Get_RTimer10MS_Imm_x86( char *code_ptr, struct funct *funct_ptr )     /* ge
 /*********************************************************************/
 void Get_RTimer100MS_Reg( char *code_ptr, struct funct *funct_ptr )   /* get machine - two argument */
 {
+    // 2025 armv7
     NUM_TYPE *temp_ptr;
     char index,a[23];
     long int j,k;
@@ -17554,6 +17571,7 @@ void Get_RTimer100MS_Reg( char *code_ptr, struct funct *funct_ptr )   /* get mac
 /*********************************************************************/
 void Get_RTimer100MS_Imm( char *code_ptr, struct funct *funct_ptr )   /* get machine - two argument */
 {
+    // 2025 armv7
     NUM_TYPE *temp_ptr;
     char index,a[23];
     long int j,k;
@@ -18231,6 +18249,7 @@ void Get_RTimer100MS_Imm_x86( char *code_ptr, struct funct *funct_ptr )   /* get
 /*********************************************************************/
 void Get_RTimer1S_Reg( char *code_ptr, struct funct *funct_ptr )   /* get machine - two argument */
 {
+    // 2025 armv7
     NUM_TYPE *temp_ptr;
     char index,a[27];
     long int j,k;
@@ -18711,6 +18730,7 @@ void Get_RTimer1S_Reg( char *code_ptr, struct funct *funct_ptr )   /* get machin
 /*********************************************************************/
 void Get_RTimer1S_Imm( char *code_ptr, struct funct *funct_ptr )   /* get machine - two argument */
 {
+    // 2025 armv7
     NUM_TYPE *temp_ptr;
     char index,a[27];
     long int j,k;
